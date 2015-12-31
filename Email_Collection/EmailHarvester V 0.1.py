@@ -10,7 +10,7 @@ from datetime import datetime
 
 # In[2]:
 
-filename= "NIT Rourkela LOI Not Received List.xls"
+filename= "List of Students.xlsx"
 
 
 # In[4]:
@@ -62,7 +62,7 @@ for i in range(workingSheet.ncols):
 
 print 'selected field for update'    
 pprint.pprint(slected_field)
-
+print "*"*20," data  ","*"*20
 
 # In[202]:
 
@@ -77,11 +77,15 @@ for row in range(1,workingSheet.nrows):
             else:
                 temp[key]=workingSheet.cell(row,slected_field[key]).value
         if key=='phone':
-            temp[key]=int(workingSheet.cell(row,slected_field[key]).value)
-                
+            try:
+                temp[key]=int(workingSheet.cell(row,slected_field[key]).value)
+            except:
+                if workingSheet.cell(row,slected_field[key]).value!='':
+                    temp[key]=int(workingSheet.cell(row,slected_field[key]).value.replace("+91",""))
         else:
             temp[key]=workingSheet.cell(row,slected_field[key]).value
         temp['timestamp']=datetime.utcnow()
+        #temp['org']='NITR' # mannual addition
     data.append(temp)
 for i in range(3):
     pprint.pprint(data[i])
