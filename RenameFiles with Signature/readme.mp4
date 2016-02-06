@@ -1,0 +1,7 @@
+# Rename All files with your Signature
+
+This is very basic tool it rename all files and folder inside given initial directory (as Base directory) With your signature in name of all files.
+```python
+Example : 
+welcome.mp4 ->rename to -> welcome_ [my signature].mp4
+```
