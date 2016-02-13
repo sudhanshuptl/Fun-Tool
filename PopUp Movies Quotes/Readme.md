@@ -7,3 +7,7 @@
  * Mongodb
  * unirest[python package]
  * pymongo [python package]
+ * pyttsx [python Sound Package]
+
+## Startup folder Location
+```C:\Users\{my user}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup```
