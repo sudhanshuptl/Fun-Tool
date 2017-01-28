@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Shine Weather</string>
+    <string name="action_settings">Setting</string>
+    <string name="action_refresh">refresh</string>
 </resources>
