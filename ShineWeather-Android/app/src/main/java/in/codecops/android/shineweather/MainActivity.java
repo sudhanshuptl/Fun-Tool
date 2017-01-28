@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 public static class PlaceholderFragment extends Fragment{
-    private ArrayAdapter<String> mForcastAdaptor;
+    public static ArrayAdapter<String> mForcastAdaptor;
     public  PlaceholderFragment(){
         // constructor
     }
@@ -61,7 +61,7 @@ public static class PlaceholderFragment extends Fragment{
         int id =item.getItemId();
         if(id==R.id.action_refresh){
             FetchWeatherTask weatherTask =new FetchWeatherTask();
-            weatherTask.execute();
+            weatherTask.execute("400059");
             return true;
         }
         return  onOptionsItemSelected(item);
@@ -73,21 +73,10 @@ public static class PlaceholderFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         String[] forcastArray={
-                "Sat -34 -324",
-                "Sun -34-234 ",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sun -34-234 ",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sat -34 -324",
-                "Sat -34 -324"
         };
-        List<String> weekForcast = new ArrayList<String>(Arrays.asList(forcastArray));
+        List<String> weekForcast = new ArrayList<String>(
+                Arrays.asList(forcastArray));
+
         mForcastAdaptor = new ArrayAdapter<String>(
                 //current context
                 getActivity(),
@@ -96,7 +85,7 @@ public static class PlaceholderFragment extends Fragment{
                 //ID of textview to populate
                 R.id.list_item_forcost_textView,
                 // forecast data
-                weekForcast );
+                weekForcast);
         //get reference to the list view and attach to the adaptor
         ListView listView = (ListView) rootView.findViewById(R.id.listView_forcast);
         listView.setAdapter(mForcastAdaptor);
@@ -104,5 +93,7 @@ public static class PlaceholderFragment extends Fragment{
         return rootView;
     }
 }
+
+
 
 }
