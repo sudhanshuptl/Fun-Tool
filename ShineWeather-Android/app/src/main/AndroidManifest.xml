@@ -18,6 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Detail_Activity"
+            android:label="@string/title_activity_detail_"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.codecops.android.shineweather.MainActivity" />
+        </activity>
+        <activity android:name=".SettingsActivity"
+            android:label="@string/title_activity_setting"
+            android:parentActivityName="in.codecops.android.shineweather.MainActivity">
+            <meta-data
+                android:name="ndroid.support.PARENT_ACTIVITY."
+                android:value="MainActivity" />
+        </activity>
     </application>
 
 </manifest>

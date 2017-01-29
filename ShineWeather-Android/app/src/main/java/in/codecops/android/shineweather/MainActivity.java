@@ -1,5 +1,6 @@
 package in.codecops.android.shineweather;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +10,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,9 +39,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.action_settings){
+            startActivity(new Intent(this,SettingsActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-
-public static class PlaceholderFragment extends Fragment{
+    public static class PlaceholderFragment extends Fragment{
     public static ArrayAdapter<String> mForcastAdaptor;
     public  PlaceholderFragment(){
         // constructor
@@ -89,6 +100,18 @@ public static class PlaceholderFragment extends Fragment{
         //get reference to the list view and attach to the adaptor
         ListView listView = (ListView) rootView.findViewById(R.id.listView_forcast);
         listView.setAdapter(mForcastAdaptor);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String forecast = mForcastAdaptor.getItem(position);
+                Intent intent = new Intent(getActivity(),Detail_Activity.class)
+                        .putExtra(Intent.EXTRA_TEXT,forecast);
+                startActivity(intent);
+
+                //Toast.makeText(getActivity(),forecast,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
         return rootView;
     }

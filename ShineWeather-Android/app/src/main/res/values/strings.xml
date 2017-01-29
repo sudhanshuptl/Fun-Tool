@@ -2,4 +2,6 @@
     <string name="app_name">Shine Weather</string>
     <string name="action_settings">Setting</string>
     <string name="action_refresh">refresh</string>
+    <string name="title_activity_detail_">Detail_Activity</string>
+    <string name="title_activity_setting">Settings</string>
 </resources>
